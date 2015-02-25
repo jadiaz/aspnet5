@@ -8,8 +8,6 @@ namespace KWebStartup
     {
         public void Configure(IApplicationBuilder app)
         {
-            app.UseStaticFiles();
-
             app.UseServices(services =>
             {
                 services.AddMvc();
