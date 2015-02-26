@@ -1,18 +1,32 @@
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.ConfigurationModel;
 
-namespace KWebStartup
+namespace MvcApplication.Web
 {
     public class Startup
     {
-        public void Configure(IApplicationBuilder app)
-        {
-            // Use default error page
-            app.UseErrorPage();
+        public IConfiguration Configuration { get; private set; }
 
-            // Show runtime information on a page (DEVELOPMENT)
-            app.UseRuntimeInfoPage();
+        public Startup (IHostingEnvironment env) 
+        {
+            Configuration = new Configuration()
+                .AddJsonFile("webConfig.json")
+                .AddEnvironmentVariables();
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+
+            if (env.EnvironmentName == "Development") 
+            {
+                // Use default error page
+                app.UseErrorPage();
+                // Show runtime information on a page (DEVELOPMENT)
+                app.UseRuntimeInfoPage();
+            }
 
             // Use custom error handler to catch exceptions and log them
             app.UseErrorHandler("/error.html");
