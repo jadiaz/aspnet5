@@ -3,6 +3,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Logging;
+using Microsoft.Framework.Logging.Console;
 
 namespace MvcApplication.Web
 {
@@ -17,8 +19,10 @@ namespace MvcApplication.Web
                 .AddEnvironmentVariables();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // Add logging to console
+            loggerFactory.AddConsole();
 
             if (env.EnvironmentName == "Development") 
             {

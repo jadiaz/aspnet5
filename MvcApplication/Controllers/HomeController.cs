@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNet.Mvc;
 using MvcSample.Web.Models;
+using Microsoft.Framework.Logging;
 
 namespace MvcSample.Web
 {
     public class HomeController : Controller
     {
+        public HomeController (ILoggerFactory loggerFactory) 
+        {
+            _logger = loggerFactory.Create(typeof(HomeController).FullName);
+        }
+
         public IActionResult Index()
         {
+            _logger.WriteInformation("Index action activated!");
+
             return View(CreateUser());
         }
 
@@ -20,5 +28,6 @@ namespace MvcSample.Web
 
             return user;
         }
+        private readonly ILogger _logger;
     }
 }
