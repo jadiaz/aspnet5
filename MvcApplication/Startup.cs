@@ -10,37 +10,45 @@ namespace MvcApplication.Web
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; private set; }
-
         public Startup (IHostingEnvironment env) 
         {
             Configuration = new Configuration()
                 .AddJsonFile("webConfig.json")
                 .AddEnvironmentVariables();
         }
+        
+        public IConfiguration Configuration { get; private set; }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void ConfigureServices(IServiceCollection services)
         {
-            // Add logging to console
+            // Add MVC to services container
+            services.AddMvc();
+        }
+
+        public void ConfigureDevelopment(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        {
+            // Add Console logging to container
             loggerFactory.AddConsole();
+            // Use default error page
+            app.UseErrorPage();
+            // Show runtime information on a page (DEVELOPMENT)
+            app.UseRuntimeInfoPage();
 
-            if (env.EnvironmentName == "Development") 
-            {
-                // Use default error page
-                app.UseErrorPage();
-                // Show runtime information on a page (DEVELOPMENT)
-                app.UseRuntimeInfoPage();
-            }
+            Configure(app);
+        }
 
+        public void ConfigureProduction(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        {
+            // Add Console logging to container
+            loggerFactory.AddConsole();
             // Use custom error handler to catch exceptions and log them
             app.UseErrorHandler("/error.html");
+            
+            Configure(app);
+        }
 
-            // Add services to pipeline
-            app.UseServices(services =>
-            {
-                services.AddMvc();
-            });
-
+        public void Configure(IApplicationBuilder app)
+        {
             // Add MVC to the request pipeline
             app.UseMvc(routes =>
             {
