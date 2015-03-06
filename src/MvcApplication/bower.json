@@ -1,0 +1,17 @@
+{
+  "name": "MvcApplication",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jadiaz/aspnet5",
+  "authors": [
+    "Jose Diaz <jose.a.diaz@aguaseca.com>"
+  ],
+  "description": "Initial asp.net mvc 6 template",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
