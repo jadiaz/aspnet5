@@ -19,6 +19,9 @@ namespace MvcApplication.Web
         
         public IConfiguration Configuration { get; private set; }
 
+        /// The purpose of this method is to setup dependency injection
+        /// Here the application learns about the services that will be
+        /// supplied to the application
         public void ConfigureServices(IServiceCollection services)
         {
             // Add MVC to services container
@@ -47,6 +50,8 @@ namespace MvcApplication.Web
             Configure(app);
         }
 
+        /// Configure allows the application to opt-into the services that are needed
+        /// We can also have separate environment configurations
         public void Configure(IApplicationBuilder app)
         {
             // Add MVC to the request pipeline
