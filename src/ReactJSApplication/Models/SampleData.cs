@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Framework.DependencyInjection;
 
-namespace MvcApplication.Models
+namespace ReactJsApplication.Models
 {
     public static class SampleData
     {

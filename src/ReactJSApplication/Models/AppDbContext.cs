@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Data.Entity;
 
-namespace MvcApplication.Models
+namespace ReactJsApplication.Models
 {
     public class AppDbContext : DbContext 
     {

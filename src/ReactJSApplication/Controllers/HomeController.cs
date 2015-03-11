@@ -1,9 +1,9 @@
 using Microsoft.AspNet.Mvc;
-using MvcApplication.Models;
+using ReactJsApplication.Models;
 using Microsoft.Framework.Logging;
 using System.Linq;
 
-namespace MvcApplication.Controllers
+namespace ReactJsApplication.Controllers
 {
     public class HomeController : Controller
     {

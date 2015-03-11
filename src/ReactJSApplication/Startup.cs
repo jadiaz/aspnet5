@@ -7,9 +7,9 @@ using Microsoft.Framework.Logging.Console;
 using Microsoft.Data.Entity;
 using System.Threading.Tasks;
 
-using MvcApplication.Models;
+using ReactJsApplication.Models;
 
-namespace MvcApplication
+namespace ReactJsApplication
 {
     public class Startup
     {
