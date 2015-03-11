@@ -1,0 +1,21 @@
+﻿@using MvcApplication.Models
+@model IEnumerable<User>
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+    string helloClass = null;
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-large" role="button">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @foreach (var user in Model)
+        {
+            <h3 title="@user.Name" class="@helloClass">Hello @user.Name!</h3>
+        }
+    </div>
+</div>
