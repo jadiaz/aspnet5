@@ -4,6 +4,10 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
+using Microsoft.Data.Entity;
+using System.Threading.Tasks;
+
+using MvcApplication.Models;
 
 namespace MvcApplication
 {
@@ -23,6 +27,14 @@ namespace MvcApplication
         /// supplied to the application
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add in-memory database store
+            services.AddEntityFramework(Configuration)
+                    .AddInMemoryStore()
+                    .AddDbContext<AppDbContext>(options =>
+                    {
+                        options.UseInMemoryStore();
+                    });
+
             // Add MVC to services container
             services.AddMvc();
         }
@@ -65,6 +77,10 @@ namespace MvcApplication
                     name: "api",
                     template: "{controller}/{id?}");
             });
+
+            // Initialize database
+            SampleData.InitializeUserTableAsync(app.ApplicationServices).Wait();
         }
+
     }
 }

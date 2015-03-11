@@ -12,7 +12,8 @@
         "Microsoft.Framework.ConfigurationModel": "1.0.0-beta3",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta3",
         "Microsoft.Framework.Logging": "1.0.0-beta3",
-        "Microsoft.Framework.Logging.Console": "1.0.0-beta3"
+        "Microsoft.Framework.Logging.Console": "1.0.0-beta3",
+        "EntityFramework.InMemory": "7.0.0-*"
     },
     "compilationOptions": {
         "warningAsErrors": true

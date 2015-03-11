@@ -1,5 +1,5 @@
 ﻿@using MvcApplication.Models
-@model User
+@model IEnumerable<User>
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Home Page";
@@ -13,6 +13,9 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <h3 title="@Model.Name" class="@helloClass">Hello @Model.Name!</h3>
+        @foreach (var user in Model)
+        {
+            <h3 title="@user.Name" class="@helloClass">Hello @user.Name!</h3>
+        }
     </div>
 </div>
