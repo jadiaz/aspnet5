@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Mvc;
-using MvcSample.Web.Models;
+using Microsoft.AspNet.Mvc;
+using MvcApplication.Models;
 using Microsoft.Framework.Logging;
 
-namespace MvcSample.Web
+namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {

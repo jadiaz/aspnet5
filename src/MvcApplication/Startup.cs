@@ -5,7 +5,7 @@ using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 
-namespace MvcApplication.Web
+namespace MvcApplication
 {
     public class Startup
     {
