@@ -5,7 +5,6 @@ using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using Microsoft.Data.Entity;
-using System.Threading.Tasks;
 
 using ReactJsApplication.Models;
 
@@ -16,7 +15,7 @@ namespace ReactJsApplication
         public Startup (IHostingEnvironment env) 
         {
             Configuration = new Configuration()
-                .AddJsonFile("webConfig.json")
+                .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
         }
         
